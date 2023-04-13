@@ -1,17 +1,9 @@
-import Cors from "cors";
-import initMiddleware from "../../middleware/init-middleware";
-
-// Initialize the cors middleware
-const cors = initMiddleware(
-  // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
-  Cors({
-    // Only allow requests with GET, POST and OPTIONS
-    methods: ["POST"],
-  })
-);
-
-exports.handler = async (req, res) => {
-  await cors(req, res);
+exports.handler = async (event, context) => {
+  if (event.httpMethod !== 'POST')   
+    return {
+        statusCode: 401,
+        body: JSON.stringify({ message: 'Not authorized' }),
+    };
 
   const mockData = {
     thresholds: [
@@ -30,8 +22,9 @@ exports.handler = async (req, res) => {
       { familySize: 13, amount: 14000 },
     ],
   };
-
-  const stringified = JSON.stringify(mockData);
-
-  res.status(200).json(stringified);
+  
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: mockData }),
+  };
 };
