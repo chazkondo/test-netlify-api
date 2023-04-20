@@ -110002,7 +110002,7 @@ const allClients = [
 ];
 
 exports.handler = async (event, context) => {
-  if (event.httpMethod !== "GET")
+  if (event.httpMethod !== "POST")
     return {
       statusCode: 401,
       body: JSON.stringify({ message: "Not authorized" }),
