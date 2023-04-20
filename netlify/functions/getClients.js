@@ -13,36 +13,39 @@ exports.handler = async (event, context) => {
   const zipcode = event.queryStringParameters.zipcode;
   const state = event.queryStringParameters.state;
   const ssn = event.queryStringParameters.ssn;
+  console.log(allClients, "all clients?");
 
-  let filteredClients = allClients.filter((person) =>
-    person.last_name.toLowerCase().startsWith(lastName.toLowerCase())
-  );
+  const filteredClients = [];
 
-  filteredClients = firstName
-    ? filteredClients.filter((person) =>
-        person.first_name.toLowerCase().startsWith(firstName.toLowerCase())
-      )
-    : filteredClients;
+  //   let filteredClients = allClients.filter((person) =>
+  //     person.last_name.toLowerCase().startsWith(lastName.toLowerCase())
+  //   );
 
-  filteredClients = birthday
-    ? filteredClients.filter((person) => person.birthday === birthday)
-    : filteredClients;
+  //   filteredClients = firstName
+  //     ? filteredClients.filter((person) =>
+  //         person.first_name.toLowerCase().startsWith(firstName.toLowerCase())
+  //       )
+  //     : filteredClients;
 
-  filteredClients = zipcode
-    ? filteredClients.filter((person) => person.zipcode === zipcode)
-    : filteredClients;
+  //   filteredClients = birthday
+  //     ? filteredClients.filter((person) => person.birthday === birthday)
+  //     : filteredClients;
 
-  filteredClients = state
-    ? filteredClients.filter(
-        (person) => person.state.toLowerCase() === state.toLowerCase()
-      )
-    : filteredClients;
+  //   filteredClients = zipcode
+  //     ? filteredClients.filter((person) => person.zipcode === zipcode)
+  //     : filteredClients;
 
-  filteredClients = ssn
-    ? filteredClients.filter(
-        (person) => person.state.toLowerCase() === state.toLowerCase()
-      )
-    : filteredClients;
+  //   filteredClients = state
+  //     ? filteredClients.filter(
+  //         (person) => person.state.toLowerCase() === state.toLowerCase()
+  //       )
+  //     : filteredClients;
+
+  //   filteredClients = ssn
+  //     ? filteredClients.filter(
+  //         (person) => person.state.toLowerCase() === state.toLowerCase()
+  //       )
+  //     : filteredClients;
 
   return {
     statusCode: 200,
