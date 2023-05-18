@@ -1,30 +1,30 @@
 exports.handler = async (event, context) => {
-  if (event.httpMethod !== 'POST')   
+  if (event.httpMethod !== "POST")
     return {
-        statusCode: 401,
-        body: JSON.stringify({ message: 'Not authorized' }),
+      statusCode: 401,
+      body: JSON.stringify({ message: "Not authorized" }),
     };
 
   const mockData = {
-    thresholds: [
-      { familySize: 1, amount: 2000 },
-      { familySize: 2, amount: 3000 },
-      { familySize: 3, amount: 4000 },
-      { familySize: 4, amount: 5000 },
-      { familySize: 5, amount: 6000 },
-      { familySize: 6, amount: 7000 },
-      { familySize: 7, amount: 8000 },
-      { familySize: 8, amount: 9000 },
-      { familySize: 9, amount: 10000 },
-      { familySize: 10, amount: 11000 },
-      { familySize: 11, amount: 12000 },
-      { familySize: 12, amount: 13000 },
-      { familySize: 13, amount: 14000 },
-    ],
+    1: 3632,
+    10: 10058,
+    11: 10267,
+    12: 10477,
+    13: 10687,
+    14: 10896,
+    15: 11106,
+    2: 4749,
+    3: 5867,
+    4: 6985,
+    5: 8102,
+    6: 9220,
+    7: 9429,
+    8: 9639,
+    9: 9848,
   };
-  
+
   return {
     statusCode: 200,
-    body: JSON.stringify({ message: mockData }),
+    body: JSON.stringify(mockData),
   };
 };
